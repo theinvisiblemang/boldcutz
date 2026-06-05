@@ -3,420 +3,84 @@
 <head>
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <title>Bold Cuts Barber's Lounge | Premium Concept</title>
-  <link rel="preconnect" href="https://fonts.googleapis.com">
-  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-  <link href="https://fonts.googleapis.com/css2?family=Cinzel:wght@700;900&family=Plus+Jakarta+Sans:wght@400;500;600;700;800&display=swap" rel="stylesheet">
+  <title>Bold Cuts | Premium Lounge</title>
+  <link href="https://fonts.googleapis.com/css2?family=Cinzel:wght@900&family=Plus+Jakarta+Sans:wght@400;800&display=swap" rel="stylesheet">
   <style>
-    :root {
-      --bg: #06070a;
-      --card-bg: #11131a;
-      --accent-red: #e63946;
-      --text-white: #ffffff;
-      --text-dim: #9ca3af;
-      --border-tint: rgba(255, 255, 255, 0.06);
-    }
-
-    * { box-sizing: border-box; margin: 0; padding: 0; }
-
-    body {
-      font-family: 'Plus Jakarta Sans', sans-serif;
-      background-color: var(--bg);
-      color: var(--text-white);
-      line-height: 1.6;
-      overflow-x: hidden;
-    }
-
-    /* SPLASH SCREEN */
-    #splash-screen {
-      position: fixed;
-      top: 0; left: 0;
-      width: 100vw; height: 100vh;
-      background: #000000;
-      z-index: 9999;
-      display: flex;
-      flex-direction: column;
-      justify-content: center;
-      align-items: center;
-      pointer-events: none;
-      animation: systemFadeOut 0.8s ease forwards 4.2s;
-    }
-
-    .splash-logo {
-      font-family: 'Cinzel', serif;
-      font-size: 2.5rem;
-      font-weight: 900;
-      color: var(--accent-red);
-      letter-spacing: 4px;
-      text-transform: uppercase;
-      opacity: 0;
-      animation: logoReveal 2s cubic-bezier(0.25, 1, 0.5, 1) forwards 1.5s;
-    }
-
-    .splash-build-tag {
-      position: absolute;
-      bottom: 40px; left: 30px;
-      font-family: monospace;
-      font-size: 0.7rem;
-      color: #33363f;
-    }
-
-    @keyframes logoReveal {
-      0% { opacity: 0; transform: scale(0.95); }
-      30% { opacity: 1; transform: scale(1); }
-      100% { opacity: 0; transform: scale(1.05); }
-    }
-
-    @keyframes systemFadeOut {
-      0% { opacity: 1; visibility: visible; }
-      100% { opacity: 0; visibility: hidden; }
-    }
-
-    /* CONTAINER & HERO */
-    .container { max-width: 500px; margin: 0 auto; background-color: #000; min-height: 100vh; padding-bottom: 60px; }
-
-    .hero-billboard {
-      position: relative;
-      width: 100%;
-      height: 520px;
-      background: linear-gradient(to bottom, rgba(0,0,0,0.3) 0%, rgba(0,0,0,0.7) 60%, #000000 100%), 
-                  url('images/fade.jpg') center/cover no-repeat;
-      display: flex; flex-direction: column; justify-content: flex-end; padding: 30px 24px;
-    }
-
-    .hero-title { font-family: 'Plus Jakarta Sans', sans-serif; font-weight: 800; font-size: 3rem; line-height: 0.95; text-transform: uppercase; margin-bottom: 12px; }
-
-    .btn-prime {
-      background: #00a8ff;
-      color: white;
-      text-align: center;
-      text-decoration: none;
-      font-weight: 700;
-      padding: 14px;
-      border-radius: 8px;
-      display: flex; align-items: center; justify-content: center; gap: 10px;
-    }
-
-    /* INFINITE MARQUEE */
-    .service-scroll { width: 100%; overflow: hidden; padding: 10px 0; display: flex; }
-    .marquee-track { display: flex; gap: 12px; width: max-content; animation: continuousLinearScroll 25s linear infinite; }
-    .pill { background: var(--card-bg); border: 1px solid var(--border-tint); padding: 8px 18px; border-radius: 20px; font-size: 0.85rem; white-space: nowrap; }
-
-    @keyframes continuousLinearScroll {
-      0% { transform: translateX(0); }
-      100% { transform: translateX(-50%); }
-    }
-
-    .service-scroll:active .marquee-track { animation-play-state: paused; }
-
-    /* GRID */
-    .lookbook-grid { display: grid; grid-template-columns: repeat(2, 1fr); gap: 12px; padding: 0 24px; }
-    .lookbook-card { background: var(--card-bg); border-radius: 8px; overflow: hidden; border: 1px solid var(--border-tint); }
-    .lookbook-img { width: 100%; height: 160px; object-fit: cover; }
-    .lookbook-label { padding: 10px; font-size: 0.8rem; text-align: center; font-weight: 600; }
-  </style>
-</head>
-<body>
-
-  <div id="splash-screen">
-    <div class="splash-logo">BOLD CUTS</div>
-    <div class="splash-build-tag">BUILD 0604-1945</div>
-  </div>
-
-  <div class="container">
-    <section class="hero-billboard">
-      <h1 class="hero-title">Bold<br>Cuts</h1>
-      <p style="margin-bottom: 24px; font-size: 0.9rem; color: #e5e7eb;">Premium grooming pipelines in Jamaica.</p>
-      
-      <!-- UPDATED BOOKING LINK -->
-      <a href="https://boldcutzbarberslounge.mysalononline.com/BookNow" class="btn-prime">
-        <svg width="14" height="16" viewBox="0 0 14 16" fill="currentColor"><path d="M0 14.5V1.5C0 0.6 1 0 1.8 0.5L12.6 7C13.3 7.4 13.3 8.6 12.6 9L1.8 15.5C1 16 0 15.4 0 14.5Z"/></svg>
-        Book Appointment
-      </a>
-    </section>
-
-    <div style="padding: 30px 24px 10px 24px; font-weight: 800; text-transform: uppercase;">Services Catalog</div>
-    <div class="service-scroll">
-      <div class="marquee-track">
-        <div class="pill">Barber Cuts</div><div class="pill">Nail Artistry</div><div class="pill">Facials</div><div class="pill">Braids</div><div class="pill">Locs</div><div class="pill">Pedicures</div>
-        <!-- Duplicate for infinite loop -->
-        <div class="pill">Barber Cuts</div><div class="pill">Nail Artistry</div><div class="pill">Facials</div><div class="pill">Braids</div><div class="pill">Locs</div><div class="pill">Pedicures</div>
-      </div>
-    </div>
-
-    <div style="padding: 30px 24px 10px 24px; font-weight: 800; text-transform: uppercase;">Lookbook</div>
-    <div class="lookbook-grid">
-      <div class="lookbook-card"><img class="lookbook-img" src="images/fade.jpg"><div class="lookbook-label">Fades</div></div>
-      <div class="lookbook-card"><img class="lookbook-img" src="images/nails.jpg"><div class="lookbook-label">Nails</div></div>
-      <div class="lookbook-card"><img class="lookbook-img" src="images/facial.jpg"><div class="lookbook-label">Skincare</div></div>
-      <div class="lookbook-card"><img class="lookbook-img" src="images/braids.jpg"><div class="lookbook-label">Braids</div></div>
-    </div>
-  </div>
-</body>
-</html>0%;
-      text-shadow: 0 2px 4px rgba(0,0,0,0.6);
-    }
-
-    .button-stack {
-      display: flex;
-      flex-direction: column;
-      gap: 12px;
-    }
-
-    .btn-prime {
-      background: #00a8ff;
-      color: white;
-      text-align: center;
-      text-decoration: none;
-      font-weight: 700;
-      padding: 14px;
-      border-radius: 8px;
-      font-size: 1rem;
-      display: flex;
-      align-items: center;
-      justify-content: center;
-      gap: 10px;
-      box-shadow: 0 4px 15px rgba(0, 168, 255, 0.3);
-    }
-
-    .btn-sec {
-      background: rgba(255, 255, 255, 0.05);
-      border: 1px solid rgba(255, 255, 255, 0.2);
-      color: white;
-      text-align: center;
-      text-decoration: none;
-      font-weight: 600;
-      padding: 14px;
-      border-radius: 8px;
-      font-size: 1rem;
-    }
-
-    .section-header {
-      font-size: 1.1rem;
-      font-weight: 800;
-      text-transform: uppercase;
-      letter-spacing: 1px;
-      padding: 30px 24px 15px 24px;
-      color: var(--text-white);
-    }
-
-    /* ==========================================================================
-       INFINITE GPU-ACCELERATED MARQUEE SCROLLER
-       ========================================================================== */
-    .service-scroll {
-      width: 100%;
-      overflow: hidden;
-      padding: 10px 0;
-      position: relative;
-      display: flex;
-    }
-
-    .marquee-track {
-      display: flex;
-      gap: 12px;
-      padding-left: 12px;
-      width: max-content;
-      animation: continuousLinearScroll 25s linear infinite;
-    }
-
-    .pill {
-      background: var(--card-bg);
-      border: 1px solid var(--border-tint);
-      padding: 8px 18px;
-      border-radius: 20px;
-      font-size: 0.85rem;
-      font-weight: 600;
-      white-space: nowrap;
-      color: var(--text-white);
-    }
-
-    @keyframes continuousLinearScroll {
-      0% { transform: translateX(0); }
-      100% { transform: translateX(-50%); }
-    }
-
-    /* Smoothly freeze animation state during interactive physical contact */
-    .service-scroll:hover .marquee-track,
-    .service-scroll:active .marquee-track {
-      animation-play-state: paused;
-    }
-
-    /* ==========================================================================
-       LOOKBOOK DISPLAY GRID
-       ========================================================================== */
-    .lookbook-grid {
-      display: grid;
-      grid-template-columns: repeat(2, 1fr);
-      gap: 12px;
-      padding: 0 24px;
-    }
-
-    .lookbook-card {
-      background: var(--card-bg);
-      border-radius: 8px;
-      overflow: hidden;
-      border: 1px solid var(--border-tint);
-    }
-
-    .lookbook-img {
-      width: 100%;
-      height: 160px;
-      object-fit: cover;
-      background-color: #1a1d26;
-    }
-
-    .lookbook-label {
-      padding: 10px;
-      font-size: 0.8rem;
-      font-weight: 600;
-      text-align: center;
-    }
-
-    .amenities-wrapper {
-      padding: 0 24px;
-    }
-    .amenities-card {
-      background: var(--card-bg);
-      border: 1px solid var(--border-tint);
-      border-radius: 12px;
-      padding: 20px;
-      display: grid;
-      grid-template-columns: repeat(2, 1fr);
-      gap: 12px;
-    }
-    .amenity-node {
-      display: flex;
-      align-items: center;
-      gap: 8px;
-      font-size: 0.85rem;
-      color: var(--text-dim);
-    }
-
-    footer {
-      text-align: center;
-      padding: 40px 24px 0 24px;
-      font-size: 0.75rem;
-      color: #4b5563;
-      border-top: 1px solid var(--border-tint);
-      margin-top: 40px;
-    }
-  </style>
-</head>
-<body>
-
-  <!-- CINEMATIC LOADING SPLASH LAYER -->
-  <div id="splash-screen">
-    <div class="splash-logo">BOLD CUTS</div>
-    <div class="splash-build-tag">BUILD 0604-1945</div>
-  </div>
-
-  <div class="demo-bar">
-    Live Strategy Optimization Concept for Bold Cuts. <a href="/">← Return to Portfolio</a>
-  </div>
-
-  <div class="container">
+    :root { --bg: #000; --red: #e63946; --card: #111; --blue: #00a8ff; }
+    * { margin: 0; padding: 0; box-sizing: border-box; }
     
-    <!-- MAIN HERO DISPLAY -->
-    <section class="hero-billboard">
-      <div class="nav-overlay">
-        <div class="brand-logo">Bold Cuts<span>.</span></div>
-        <div class="menu-icon"></div>
-      </div>
-      
-      <div class="hero-content-box">
-        <div class="hero-tags">
-          <div class="tag-pill premium">LOUNGE</div>
-          <div class="tag-pill">JAMAICA</div>
-          <div class="tag-pill">★ 5.0</div>
-        </div>
-        <h1 class="hero-title">Bold<br>Cuts</h1>
-        <p class="hero-description">Your premium gateway to exceptional grooming pipelines. Skip the queue and secure your lounge appointment instantly.</p>
-        
-        <div class="button-stack">
-          <a href="#" class="btn-prime" onclick="alert('Demo Workflow: Securely anchors client into your live calendar engine.')">
-            <svg width="14" height="16" viewBox="0 0 14 16" fill="currentColor" style="margin-top:1px;"><path d="M0 14.5V1.5C0 0.6 1 0 1.8 0.5L12.6 7C13.3 7.4 13.3 8.6 12.6 9L1.8 15.5C1 16 0 15.4 0 14.5Z"/></svg>
-            Book Appointment
-          </a>
-          <a href="#" class="btn-sec" onclick="alert('Launches personal client records module.')">Client Dashboard</a>
-        </div>
-      </div>
-    </section>
+    body { 
+      font-family: 'Plus Jakarta Sans', sans-serif; 
+      background: var(--bg); 
+      color: white; 
+      overflow-x: hidden; 
+    }
 
-    <!-- HORIZONTAL INFINITE MARQUEE MIGRATED TO CSS SYSTEM -->
-    <div class="section-header">Services Catalog</div>
-    <div class="service-scroll">
-      <div class="marquee-track">
-        <!-- Original List Set -->
-        <div class="pill">Barber Cuts</div>
-        <div class="pill">Nail Artistry</div>
-        <div class="pill">Facial Skincare</div>
-        <div class="pill">Custom Braids</div>
-        <div class="pill">Loc Extensions</div>
-        <div class="pill">Pedicures</div>
-        
-        <!-- Duplicated Loop Identity Group for Infinite Linear Wrap -->
-        <div class="pill">Barber Cuts</div>
-        <div class="pill">Nail Artistry</div>
-        <div class="pill">Facial Skincare</div>
-        <div class="pill">Custom Braids</div>
-        <div class="pill">Loc Extensions</div>
-        <div class="pill">Pedicures</div>
-      </div>
-    </div>
+    /* INTRO ANIMATION */
+    #splash {
+      position: fixed; inset: 0; background: #000; z-index: 9999;
+      display: flex; justify-content: center; align-items: center;
+      animation: fadeOut 0.6s forwards 3.5s;
+    }
+    .logo-anim {
+      font-family: 'Cinzel', serif; font-size: 2rem; color: var(--red);
+      letter-spacing: 4px; animation: pulse 2s infinite;
+    }
+    @keyframes fadeOut { to { opacity: 0; visibility: hidden; } }
+    @keyframes pulse { 0%, 100% { opacity: 1; } 50% { opacity: 0.5; } }
 
-    <!-- MAIN DISPLAY LOOKBOOK TILES USING THE FOLDER IMAGE ARRAYS -->
-    <div class="section-header">Lounge Lookbook</div>
-    <div class="lookbook-grid">
-      
-      <div class="lookbook-card">
-        <img class="lookbook-img" src="images/fade.jpg" alt="Precision Fades">
-        <div class="lookbook-label">Precision Fades</div>
-      </div>
+    /* LAYOUT */
+    .container { max-width: 450px; margin: 0 auto; min-height: 100vh; }
 
-      <div class="lookbook-card">
-        <img class="lookbook-img" src="images/nails.jpg" alt="Nail Artistry">
-        <div class="lookbook-label">Nail Artistry</div>
-      </div>
+    .hero {
+      height: 500px; padding: 25px;
+      display: flex; flex-direction: column; justify-content: flex-end;
+      background: linear-gradient(0deg, #000 15%, transparent 100%), url('images/fade.jpg') center/cover;
+    }
 
-      <div class="lookbook-card">
-        <img class="lookbook-img" src="images/facial.jpg" alt="Facial Skincare">
-        <div class="lookbook-label">Facial Skincare</div>
-      </div>
+    .btn-book {
+      background: var(--blue); color: white; text-decoration: none;
+      padding: 18px; border-radius: 12px; font-weight: 800; text-align: center;
+      margin-top: 20px; display: block;
+    }
 
-      <div class="lookbook-card">
-        <img class="lookbook-img" src="images/braids.jpg" alt="Custom Braids">
-        <div class="lookbook-label">Custom Braids</div>
-      </div>
+    /* MARQUEE SCROLL */
+    .marquee { overflow: hidden; padding: 20px 0; background: #080808; margin: 10px 0; }
+    .track { display: flex; gap: 15px; animation: drift 20s linear infinite; width: max-content; }
+    .tag { background: var(--card); padding: 8px 18px; border-radius: 20px; white-space: nowrap; font-weight: 600; border: 1px solid #222; }
+    @keyframes drift { from { transform: translateX(0); } to { transform: translateX(-50%); } }
 
-      <div class="lookbook-card">
-        <img class="lookbook-img" src="images/locs.jpg" alt="Loc Extensions">
-        <div class="lookbook-label">Loc Extensions</div>
-      </div>
+    /* LOOKBOOK */
+    .grid { display: grid; grid-template-columns: 1fr 1fr; gap: 10px; padding: 15px; }
+    .card { background: var(--card); border-radius: 10px; overflow: hidden; }
+    .card img { width: 100%; height: 150px; object-fit: cover; display: block; }
+    .card p { padding: 10px; font-size: 0.75rem; text-align: center; font-weight: 800; text-transform: uppercase; }
+  </style>
+</head>
+<body>
 
-      <div class="lookbook-card">
-        <img class="lookbook-img" src="images/pedicure.jpg" alt="Pedicures">
-        <div class="lookbook-label">Pedicures</div>
-      </div>
+  <div id="splash"><div class="logo-anim">BOLD CUTS</div></div>
 
-    </div>
+  <div class="container">
+    <header class="hero">
+      <h1 style="font-size: 3rem; line-height: 1;">BOLD<br>CUTS</h1>
+      <p style="color: #888; margin-top: 10px;">Premium Barbering & Grooming Lounge</p>
+      <a href="https://boldcutzbarberslounge.mysalononline.com/BookNow" class="btn-book">BOOK APPOINTMENT</a>
+    </header>
 
-    <!-- CORE AMENITIES SUMMARY MODULE -->
-    <div class="section-header">Lounge Policies</div>
-    <div class="amenities-wrapper">
-      <div class="amenities-card">
-        <div class="amenity-node">💵 Cash Accepted</div>
-        <div class="amenity-node">💳 Cards Welcome</div>
-        <div class="amenity-node">🅿️ Free Parking</div>
-        <div class="amenity-node">📶 Guest Wi-Fi</div>
-        <div class="amenity-node">👶 Kid Friendly</div>
-        <div class="amenity-node">🤝 All Welcomed</div>
+    <div class="marquee">
+      <div class="track">
+        <div class="tag">Barber Cuts</div><div class="tag">Nails</div><div class="tag">Facials</div><div class="tag">Braids</div><div class="tag">Locs</div>
+        <div class="tag">Barber Cuts</div><div class="tag">Nails</div><div class="tag">Facials</div><div class="tag">Braids</div><div class="tag">Locs</div>
       </div>
     </div>
 
-    <footer>
-      <p>&copy; 2026 Bold Cuts Barber's Lounge. Concept Layer Designed by The Invisible Man.</p>
-    </footer>
-
+    <div class="grid">
+      <div class="card"><img src="images/fade.jpg"><p>Fades</p></div>
+      <div class="card"><img src="images/nails.jpg"><p>Nail Art</p></div>
+      <div class="card"><img src="images/facial.jpg"><p>Skincare</p></div>
+      <div class="card"><img src="images/braids.jpg"><p>Braids</p></div>
+    </div>
   </div>
 
 </body>
