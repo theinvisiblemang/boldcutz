@@ -3,84 +3,336 @@
 <head>
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <title>Bold Cuts | Premium Lounge</title>
-  <link href="https://fonts.googleapis.com/css2?family=Cinzel:wght@900&family=Plus+Jakarta+Sans:wght@400;800&display=swap" rel="stylesheet">
+  <title>Bold Cuts Barber's Lounge | Premium Experience</title>
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Cinzel:wght@900&family=Plus+Jakarta+Sans:wght@400;600;800&display=swap" rel="stylesheet">
   <style>
-    :root { --bg: #000; --red: #e63946; --card: #111; --blue: #00a8ff; }
+    :root {
+      --bg: #000000;
+      --accent: #e63946;
+      --card: #111111;
+      --blue: #00a8ff;
+      --text: #ffffff;
+      --dim: #a0a0a0;
+      --border-tint: rgba(255, 255, 255, 0.06);
+    }
+
     * { margin: 0; padding: 0; box-sizing: border-box; }
-    
-    body { 
-      font-family: 'Plus Jakarta Sans', sans-serif; 
-      background: var(--bg); 
-      color: white; 
-      overflow-x: hidden; 
+
+    body {
+      font-family: 'Plus Jakarta Sans', sans-serif;
+      background-color: var(--bg);
+      color: var(--text);
+      overflow-x: hidden;
+      line-height: 1.5;
     }
 
-    /* INTRO ANIMATION */
-    #splash {
-      position: fixed; inset: 0; background: #000; z-index: 9999;
-      display: flex; justify-content: center; align-items: center;
-      animation: fadeOut 0.6s forwards 3.5s;
+    /* --- CINEMATIC INTRO SPLASH --- */
+    #intro-layer {
+      position: fixed;
+      inset: 0;
+      background: #000;
+      z-index: 9999;
+      display: flex;
+      flex-direction: column;
+      justify-content: center;
+      align-items: center;
+      animation: fadeOut 0.8s generals forwards 3.5s;
     }
-    .logo-anim {
-      font-family: 'Cinzel', serif; font-size: 2rem; color: var(--red);
-      letter-spacing: 4px; animation: pulse 2s infinite;
+
+    .intro-logo {
+      font-family: 'Cinzel', serif;
+      font-size: 2.5rem;
+      color: var(--accent);
+      letter-spacing: 5px;
+      opacity: 0;
+      animation: logoIn 2s ease-in-out forwards 0.8s;
     }
-    @keyframes fadeOut { to { opacity: 0; visibility: hidden; } }
-    @keyframes pulse { 0%, 100% { opacity: 1; } 50% { opacity: 0.5; } }
 
-    /* LAYOUT */
-    .container { max-width: 450px; margin: 0 auto; min-height: 100vh; }
+    .build-tag {
+      position: absolute;
+      bottom: 30px;
+      left: 30px;
+      font-family: monospace;
+      font-size: 10px;
+      color: #333333;
+    }
 
+    @keyframes logoIn {
+      0% { opacity: 0; transform: scale(0.95); }
+      50% { opacity: 1; transform: scale(1); }
+      100% { opacity: 0; transform: scale(1.05); filter: blur(5px); }
+    }
+
+    @keyframes fadeOut {
+      to { opacity: 0; visibility: hidden; }
+    }
+
+    /* --- MOBILE SHELL CONTAINER --- */
+    .app-container {
+      max-width: 480px;
+      margin: 0 auto;
+      background: #000000;
+      min-height: 100vh;
+      padding-bottom: 60px;
+      box-shadow: 0 0 30px rgba(0,0,0,0.5);
+    }
+
+    /* --- HERO DISPLAY --- */
     .hero {
-      height: 500px; padding: 25px;
-      display: flex; flex-direction: column; justify-content: flex-end;
-      background: linear-gradient(0deg, #000 15%, transparent 100%), url('images/fade.jpg') center/cover;
+      position: relative;
+      height: 520px;
+      width: 100%;
+      background: linear-gradient(0deg, #000000 15%, rgba(0,0,0,0.4) 60%, transparent 100%), 
+                  url('images/fade.jpg') center/cover no-repeat;
+      display: flex;
+      flex-direction: column;
+      justify-content: flex-end;
+      padding: 30px 24px;
+    }
+
+    .hero-tags {
+      display: flex;
+      gap: 8px;
+      margin-bottom: 12px;
+    }
+
+    .tag-pill {
+      background: rgba(255, 255, 255, 0.15);
+      backdrop-filter: blur(8px);
+      -webkit-backdrop-filter: blur(8px);
+      padding: 4px 12px;
+      border-radius: 6px;
+      font-size: 0.75rem;
+      font-weight: 700;
+      letter-spacing: 0.5px;
+    }
+
+    .tag-pill.premium { background: var(--accent); }
+
+    .hero h1 {
+      font-size: 3.2rem;
+      text-transform: uppercase;
+      line-height: 0.95;
+      margin-bottom: 12px;
+      font-weight: 800;
+    }
+
+    .hero p {
+      color: #e5e7eb;
+      font-size: 0.9rem;
+      margin-bottom: 24px;
+      max-width: 95%;
     }
 
     .btn-book {
-      background: var(--blue); color: white; text-decoration: none;
-      padding: 18px; border-radius: 12px; font-weight: 800; text-align: center;
-      margin-top: 20px; display: block;
+      background: var(--blue);
+      color: #ffffff;
+      text-decoration: none;
+      padding: 16px;
+      border-radius: 10px;
+      font-weight: 800;
+      text-align: center;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      gap: 10px;
+      font-size: 1rem;
+      box-shadow: 0 4px 15px rgba(0, 168, 255, 0.3);
     }
 
-    /* MARQUEE SCROLL */
-    .marquee { overflow: hidden; padding: 20px 0; background: #080808; margin: 10px 0; }
-    .track { display: flex; gap: 15px; animation: drift 20s linear infinite; width: max-content; }
-    .tag { background: var(--card); padding: 8px 18px; border-radius: 20px; white-space: nowrap; font-weight: 600; border: 1px solid #222; }
-    @keyframes drift { from { transform: translateX(0); } to { transform: translateX(-50%); } }
+    /* --- MARQUEE ENGINE --- */
+    .section-title {
+      padding: 30px 24px 12px;
+      font-weight: 800;
+      font-size: 0.85rem;
+      text-transform: uppercase;
+      letter-spacing: 1.5px;
+      color: var(--text);
+    }
 
-    /* LOOKBOOK */
-    .grid { display: grid; grid-template-columns: 1fr 1fr; gap: 10px; padding: 15px; }
-    .card { background: var(--card); border-radius: 10px; overflow: hidden; }
-    .card img { width: 100%; height: 150px; object-fit: cover; display: block; }
-    .card p { padding: 10px; font-size: 0.75rem; text-align: center; font-weight: 800; text-transform: uppercase; }
+    .marquee {
+      width: 100%;
+      overflow: hidden;
+      display: flex;
+      background: #050505;
+      padding: 12px 0;
+      border-top: 1px solid var(--border-tint);
+      border-bottom: 1px solid var(--border-tint);
+    }
+
+    .marquee-content {
+      display: flex;
+      gap: 12px;
+      padding-left: 12px;
+      animation: scrollTrack 25s linear infinite;
+    }
+
+    .marquee-tag {
+      background: var(--card);
+      padding: 8px 18px;
+      border-radius: 20px;
+      white-space: nowrap;
+      font-weight: 600;
+      font-size: 0.85rem;
+      border: 1px solid var(--border-tint);
+    }
+
+    @keyframes scrollTrack {
+      from { transform: translateX(0); }
+      to { transform: translateX(-50%); }
+    }
+
+    /* --- GALLERY LOOKBOOK --- */
+    .lookbook-grid {
+      display: grid;
+      grid-template-columns: 1fr 1fr;
+      gap: 12px;
+      padding: 0 24px;
+    }
+
+    .lookbook-item {
+      background: var(--card);
+      border-radius: 12px;
+      overflow: hidden;
+      border: 1px solid var(--border-tint);
+    }
+
+    .lookbook-item img {
+      width: 100%;
+      height: 160px;
+      object-fit: cover;
+      display: block;
+    }
+
+    .lookbook-item span {
+      display: block;
+      padding: 12px;
+      text-align: center;
+      font-size: 0.8rem;
+      font-weight: 600;
+    }
+
+    /* --- AMENITIES LOUNGE CARDS --- */
+    .amenities-card {
+      background: var(--card);
+      border: 1px solid var(--border-tint);
+      border-radius: 12px;
+      padding: 20px;
+      margin: 0 24px;
+      display: grid;
+      grid-template-columns: repeat(2, 1fr);
+      gap: 12px;
+    }
+    
+    .amenity-node {
+      display: flex;
+      align-items: center;
+      gap: 8px;
+      font-size: 0.85rem;
+      color: var(--dim);
+    }
+
+    footer {
+      text-align: center;
+      padding: 40px 24px 0;
+      font-size: 0.75rem;
+      color: #4b5563;
+    }
   </style>
 </head>
 <body>
 
-  <div id="splash"><div class="logo-anim">BOLD CUTS</div></div>
+  <!-- CINEMATIC LOADING INTRO -->
+  <div id="intro-layer">
+    <div class="intro-logo">BOLD CUTS</div>
+    <div class="build-tag">BUILD 0604-1945</div>
+  </div>
 
-  <div class="container">
+  <div class="app-container">
+    
+    <!-- MAIN HERO DISPLAY -->
     <header class="hero">
-      <h1 style="font-size: 3rem; line-height: 1;">BOLD<br>CUTS</h1>
-      <p style="color: #888; margin-top: 10px;">Premium Barbering & Grooming Lounge</p>
-      <a href="https://boldcutzbarberslounge.mysalononline.com/BookNow" class="btn-book">BOOK APPOINTMENT</a>
+      <div class="hero-tags">
+        <div class="tag-pill premium">LOUNGE</div>
+        <div class="tag-pill">JAMAICA</div>
+        <div class="tag-pill">★ 5.0</div>
+      </div>
+      <h1>BOLD<br>CUTS</h1>
+      <p>Your premium gateway to exceptional grooming pipelines. Skip the queue and secure your lounge appointment instantly.</p>
+      
+      <!-- DIRECT REDIRECT CALENDAR INTERACTION LINK -->
+      <a href="https://boldcutzbarberslounge.mysalononline.com/BookNow" class="btn-book">
+        <svg width="16" height="16" fill="white" viewBox="0 0 24 24"><path d="M8 5v14l11-7z"/></svg>
+        BOOK APPOINTMENT
+      </a>
     </header>
 
+    <!-- HORIZONTAL INFINITE SCROLLER -->
+    <div class="section-title">Services Catalog</div>
     <div class="marquee">
-      <div class="track">
-        <div class="tag">Barber Cuts</div><div class="tag">Nails</div><div class="tag">Facials</div><div class="tag">Braids</div><div class="tag">Locs</div>
-        <div class="tag">Barber Cuts</div><div class="tag">Nails</div><div class="tag">Facials</div><div class="tag">Braids</div><div class="tag">Locs</div>
+      <div class="marquee-content">
+        <div class="marquee-tag">Barber Cuts</div>
+        <div class="marquee-tag">Nail Artistry</div>
+        <div class="marquee-tag">Facial Skincare</div>
+        <div class="marquee-tag">Custom Braids</div>
+        <div class="marquee-tag">Loc Extensions</div>
+        <div class="marquee-tag">Pedicures</div>
+        <!-- Cloned Identical Loop Set -->
+        <div class="marquee-tag">Barber Cuts</div>
+        <div class="marquee-tag">Nail Artistry</div>
+        <div class="marquee-tag">Facial Skincare</div>
+        <div class="marquee-tag">Custom Braids</div>
+        <div class="marquee-tag">Loc Extensions</div>
+        <div class="marquee-tag">Pedicures</div>
       </div>
     </div>
 
-    <div class="grid">
-      <div class="card"><img src="images/fade.jpg"><p>Fades</p></div>
-      <div class="card"><img src="images/nails.jpg"><p>Nail Art</p></div>
-      <div class="card"><img src="images/facial.jpg"><p>Skincare</p></div>
-      <div class="card"><img src="images/braids.jpg"><p>Braids</p></div>
+    <!-- MAIN DISPLAY LOOKBOOK TILES -->
+    <div class="section-title">Lounge Lookbook</div>
+    <div class="lookbook-grid">
+      <div class="lookbook-item">
+        <img src="images/fade.jpg" alt="Precision Fades">
+        <span>Precision Fades</span>
+      </div>
+      <div class="lookbook-item">
+        <img src="images/nails.jpg" alt="Nail Artistry">
+        <span>Nail Artistry</span>
+      </div>
+      <div class="lookbook-item">
+        <img src="images/facial.jpg" alt="Facial Skincare">
+        <span>Facial Skincare</span>
+      </div>
+      <div class="lookbook-item">
+        <img src="images/braids.jpg" alt="Custom Braids">
+        <span>Custom Braids</span>
+      </div>
+      <div class="lookbook-item">
+        <img src="images/locs.jpg" alt="Loc Extensions">
+        <span>Loc Extensions</span>
+      </div>
+      <div class="lookbook-item">
+        <img src="images/pedicure.jpg" alt="Pedicures">
+        <span>Pedicures</span>
+      </div>
     </div>
+
+    <!-- CORE AMENITIES SUMMARY MODULE -->
+    <div class="section-title">Lounge Policies</div>
+    <div class="amenities-card">
+      <div class="amenity-node">💵 Cash Accepted</div>
+      <div class="amenity-node">💳 Cards Welcome</div>
+      <div class="amenity-node">🅿️ Free Parking</div>
+      <div class="amenity-node">📶 Guest Wi-Fi</div>
+      <div class="amenity-node">👶 Kid Friendly</div>
+      <div class="amenity-node">🤝 All Welcomed</div>
+    </div>
+
+    <footer>
+      <p>&copy; 2026 Bold Cuts Barber's Lounge. Concept Designed by The Invisible Man.</p>
+    </footer>
+
   </div>
 
 </body>
