@@ -244,11 +244,18 @@
 </head>
 <body>
 
-  <!-- CINEMATIC LOADING INTRO -->
-  <div id="intro-layer">
-    <div class="intro-logo">BOLD CUTS</div>
-    <div class="build-tag">BUILD 0604-1945</div>
-  </div>
+  </* --- CINEMATIC INTRO SPLASH --- */
+    #intro-layer {
+      position: fixed;
+      inset: 0;
+      background: #000;
+      z-index: 9999;
+      display: flex;
+      flex-direction: column;
+      justify-content: center;
+      align-items: center;
+      animation: fadeOut 0.8s ease forwards 3.5s;
+    }
 
   <div class="app-container">
     
